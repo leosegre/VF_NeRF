@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html><head lang="en"><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+
+    <title>VF-NeRF</title>
+
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <meta property="og:image" content="https://leosegre.github.io/VF-NeRF/img/merged_office.png">
+    <meta property="og:image:type" content="image/png">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="630">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://leosegre.github.io/VF-NeRF">
+    <meta property="og:title" content="VF-NeRF: Viewshed Fields For Rigid NeRF Registration">
+    <meta property="og:description" content="3D scene registration is a fundamental problem in computer vision that seeks the best 6-DoF alignment between two scenes. This problem was extensively investigated in the case of point clouds and meshes, but there has been relatively limited work regarding Neural Radiance Fields (NeRF).
+In this paper, we consider the problem of rigid registration between two NeRFs when the position of the original cameras is not given. Our key novelty is the introduction of Viewshed Fields (VF), an implicit function that determines, for each 3D point, how likely it is to be viewed by the original cameras. We demonstrate how VF can help in the various stages of NeRF registration, with an extensive evaluation showing that VF-NeRF achieves SOTA results on various datasets with different capturing approaches such as LLFF and Objaverese.">
+
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="VF-NeRF: Viewshed Fields For Rigid NeRF Registration">
+    <meta name="twitter:description" content="3D scene registration is a fundamental problem in computer vision that seeks the best 6-DoF alignment between two scenes. This problem was extensively investigated in the case of point clouds and meshes, but there has been relatively limited work regarding Neural Radiance Fields (NeRF).
+In this paper, we consider the problem of rigid registration between two NeRFs when the position of the original cameras is not given. Our key novelty is the introduction of Viewshed Fields (VF), an implicit function that determines, for each 3D point, how likely it is to be viewed by the original cameras. We demonstrate how VF can help in the various stages of NeRF registration, with an extensive evaluation showing that VF-NeRF achieves SOTA results on various datasets with different capturing approaches such as LLFF and Objaverese.">
+    <meta name="twitter:image" content="https://leosegre.github.io/VF-NeRF/img/merged_office.png">
+
+
+    <!-- mirror: F0%9F%AA%9E&lt -->
+    <link rel="icon" href="data:image/svg+xml,&lt;svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22&gt;&lt;text y=%22.9em%22 font-size=%2290%22&gt;%E2%9C%A8&lt;/text&gt;&lt;/svg&gt;">
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/font-awesome.min.css">
+    <link rel="stylesheet" href="css/codemirror.min.css">
+    <link rel="stylesheet" href="css/app.css">
+
+    <script src="js/jquery.min.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+    <script src="js/codemirror.min.js"></script>
+    <script src="js/clipboard.min.js"></script>
+    <script src="js/video_comparison.js"></script>
+    <script src="js/app.js"></script>
+</head>
+
+<body>
+    <div class="container" id="header" style="text-align: center; margin: auto;">
+        <div class="row" id="title-row" style="max-width: 100%; margin: 0 auto; display: inline-block">
+            <h2 class="col-md-12 text-center" id="title">
+                <b>VF-NeRF</b>: Viewshed Fields For Rigid NeRF Registration<br>
+            </h2>
+        </div>
+            <div class="is-size-5 publication-authors">
+              <span class="author-block">
+                <a href="https://scholar.google.co.il/citations?hl=iw&user=A7FWhoIAAAAJ">Leo Segre</a>,
+              </span>
+              <span class="author-block">
+                <a href="https://scholar.google.co.il/citations?hl=iw&user=hpItE1QAAAAJ">Shai Avidan</a>
+              </span>
+
+            <div class="is-size-5 publication-authors">
+              <span class="author-block">Tel Aviv University</span>
+            </div>
+            </div>
+        </div>
+    </div>
+    <script>
+        document.getElementById('author-row').style.maxWidth = document.getElementById("title-row").clientWidth + 'px';
+    </script>
+    <div class="container" id="main">
+        <div class="row">
+                <div class="col-sm-6 col-sm-offset-3 text-center">
+                    <ul class="nav nav-pills nav-justified">
+                        <li>
+                            <a href="TBD">
+                            <img src="./img/arxiv.png" height="60px">
+                                <h4><strong>Paper</strong></h4>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="https://github.com/leosegre/VF_NeRF" target="_blank">
+                            <img src="img/github.png" height="60px">
+                                <h4><strong>Code</strong></h4>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+        </div>
+
+
+        <div class="row">
+            <div class="col-md-8 col-md-offset-2">
+                <div class="video-compare-container" id="officeDiv">
+                    <video class="video" id="office" loop playsinline autoPlay muted src="video/office_merged_side_by_side.mp4" onplay="resizeAndPlay(this)"></video>
+                    
+                    <canvas height=0 class="videoMerge" id="officeMerge"></canvas>
+                </div>
+			</div>
+        </div>
+
+
+        <div class="row">
+            <div class="col-md-8 col-md-offset-2">
+                <h3>
+                    Abstract
+                </h3>
+                <p class="text-justify">
+3D scene registration is a fundamental problem in computer vision that seeks the best 6-DoF alignment between two scenes. This problem was extensively investigated in the case of point clouds and meshes, but there has been relatively limited work regarding Neural Radiance Fields (NeRF).
+In this paper, we consider the problem of rigid registration between two NeRFs when the position of the original cameras is not given. Our key novelty is the introduction of Viewshed Fields (VF), an implicit function that determines, for each 3D point, how likely it is to be viewed by the original cameras. We demonstrate how VF can help in the various stages of NeRF registration, with an extensive evaluation showing that VF-NeRF achieves SOTA results on various datasets with different capturing approaches such as LLFF and Objaverese.                </p>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-md-8 col-md-offset-2">
+                <h3>
+                    VF-NeRF Optimization process
+                </h3>
+                <div class="text-justify">
+                    Visualization of the VF-NeRF registration optimization process on the Trex scene from LLFF dataset:
+                    <br><br>
+                    
+                </div>
+                <div class="text-center">
+                    <video id="trex_train" width="40%" playsinline autoplay loop muted>
+                        <source src="video/trex_train.mp4" type="video/mp4" />
+                    </video>
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-md-8 col-md-offset-2">
+                <h3>
+                    Qualitative Results
+                </h3>
+                <div class="text-justify">
+                    Visualization of the VF-NeRF registration results on our captured Table scene and the Horns scene from LLFF dataset:
+                    <br><br>
+
+                </div>
+                <div class="video-compare-container" id="table_mergedDiv">
+                    <video class="video" id="table_merged" loop playsinline autoPlay muted src="video/table_merged_side_by_side.mp4" onplay="resizeAndPlay(this)"></video>
+
+                    <canvas height=0 class="videoMerge" id="tableMerge"></canvas>
+                </div>
+
+                <div class="video-compare-container" id="horns_mergedDiv">
+                    <video class="video" id="horns_merged" loop playsinline autoPlay muted src="video/horns_merged_side_by_side.mp4" onplay="resizeAndPlay(this)"></video>
+
+                    <canvas height=0 class="videoMerge" id="hornsMerge"></canvas>
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-md-8 col-md-offset-2">
+                <h3>
+                    VF-NeRF Based Point Clouds
+                </h3>
+                <div class="text-justify">
+                    A demonstration of our VF-based point clouds, generated using the normalizing-flows invert direction:
+                    <br><br>
+
+                </div>
+                <div class="text-center">
+                    <img id="point_clouds" width="90%" src="img/point_clouds.png"/>
+                    </img>
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-md-8 col-md-offset-2">
+                <h3>
+                    Quantitative Results
+                </h3>
+                <div class="text-justify">
+                    We compare our method to previous NeRF registration and point-cloud registration methods. We show here the results over Objaverse dataset as described in the paper:
+                    <br><br>
+
+                </div>
+                <div class="text-center">
+                    <img id="results" width="90%" src="img/results.png"/>
+                    </img>
+                </div>
+            </div>
+        </div>
+            
+        <div class="row">
+            <div class="col-md-8 col-md-offset-2">
+                <h3>
+                    Citation
+                </h3>
+                <div class="form-group col-md-10 col-md-offset-1">
+                    <textarea id="bibtex" class="form-control" readonly>
+                    TBD
+                    </textarea>
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-md-8 col-md-offset-2">
+                <p class="text-justify">
+                    <br>
+                The website template was borrowed from <a href="https://dorverbin.github.io/refnerf/">Dor Verbin</a>.
+                </p>
+            </div>
+        </div>
+    </div>
+
+
+</body></html>
