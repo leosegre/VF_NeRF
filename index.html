@@ -87,8 +87,8 @@ In this paper, we consider the problem of rigid registration between two NeRFs w
 
         <div class="row">
             <div class="col-md-8 col-md-offset-2">
-                <div class="video-compare-container" id="table_mergedDiv">
-                    <video class="video" id="table_merged" loop playsinline autoPlay muted src="video/table_merged_side_by_side.mp4" onplay="resizeAndPlay(this)"></video>
+                <div class="video-compare-container" id="tableDiv">
+                    <video class="video" id="table" loop playsinline autoPlay muted src="video/table_merged_side_by_side.mp4" onplay="resizeAndPlay(this)"></video>
                     <canvas height=0 class="videoMerge" id="tableMerge"></canvas>
                 </div>
 			</div>
@@ -116,7 +116,7 @@ In this paper, we consider the problem of rigid registration between two NeRFs w
                     <br><br>
                 </div>
                 <div class="text-center">
-                    <video id="trex_train" width="40%" playsinline autoplay loop muted>
+                    <video id="trex_train" width="60%" playsinline autoplay loop muted>
                         <source src="video/trex_train.mp4" type="video/mp4" />
                     </video>
                 </div>
@@ -162,6 +162,23 @@ In this paper, we consider the problem of rigid registration between two NeRFs w
                 <div class="text-center">
                     <img id="point_clouds" width="90%" src="img/point_clouds.png"/>
                     </img>
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-md-8 col-md-offset-2">
+                <h3>
+                    Viewshed Fields Visualization
+                </h3>
+                <div class="text-justify">
+                    Visualization of the viewshed fields on the Trex scene from LLFF dataset, note the effect of view direction on the VF:
+                    <br><br>
+                </div>
+                <div class="text-center">
+                    <video id="vf_direction" width="60%" playsinline autoplay loop muted>
+                        <source src="video/vf_direction_trex.mp4" type="video/mp4" />
+                    </video>
                 </div>
             </div>
         </div>
