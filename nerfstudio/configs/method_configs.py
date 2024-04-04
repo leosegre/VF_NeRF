@@ -25,21 +25,7 @@ import tyro
 from nerfstudio.cameras.camera_optimizers import CameraOptimizerConfig
 from nerfstudio.configs.base_config import ViewerConfig
 from nerfstudio.data.datamanagers.base_datamanager import VanillaDataManagerConfig
-from nerfstudio.data.datamanagers.depth_datamanager import DepthDataManagerConfig
-from nerfstudio.data.datamanagers.sdf_datamanager import SDFDataManagerConfig
-from nerfstudio.data.datamanagers.semantic_datamanager import SemanticDataManagerConfig
-from nerfstudio.data.dataparsers.blender_dataparser import BlenderDataParserConfig
-from nerfstudio.data.dataparsers.dnerf_dataparser import DNeRFDataParserConfig
-from nerfstudio.data.dataparsers.dycheck_dataparser import DycheckDataParserConfig
-from nerfstudio.data.dataparsers.instant_ngp_dataparser import (
-    InstantNGPDataParserConfig,
-)
 from nerfstudio.data.dataparsers.nerfstudio_dataparser import NerfstudioDataParserConfig
-from nerfstudio.data.dataparsers.phototourism_dataparser import (
-    PhototourismDataParserConfig,
-)
-from nerfstudio.data.dataparsers.sdfstudio_dataparser import SDFStudioDataParserConfig
-from nerfstudio.data.dataparsers.sitcoms3d_dataparser import Sitcoms3DDataParserConfig
 from nerfstudio.engine.optimizers import AdamOptimizerConfig, RAdamOptimizerConfig, SGDOptimizerConfig
 from nerfstudio.engine.schedulers import (
     CosineDecaySchedulerConfig,
@@ -47,21 +33,8 @@ from nerfstudio.engine.schedulers import (
     MultiStepSchedulerConfig,
 )
 from nerfstudio.engine.trainer import TrainerConfig
-from nerfstudio.field_components.temporal_distortions import TemporalDistortionKind
-from nerfstudio.fields.sdf_field import SDFFieldConfig
-from nerfstudio.models.depth_nerfacto import DepthNerfactoModelConfig
-from nerfstudio.models.instant_ngp import InstantNGPModelConfig
-from nerfstudio.models.mipnerf import MipNerfModel
 from nerfstudio.models.nerfacto import NerfactoModelConfig
-from nerfstudio.models.nerfplayer_nerfacto import NerfplayerNerfactoModelConfig
-from nerfstudio.models.nerfplayer_ngp import NerfplayerNGPModelConfig
-from nerfstudio.models.neus import NeuSModelConfig
-from nerfstudio.models.neus_facto import NeuSFactoModelConfig
-from nerfstudio.models.semantic_nerfw import SemanticNerfWModelConfig
-from nerfstudio.models.tensorf import TensoRFModelConfig
-from nerfstudio.models.vanilla_nerf import NeRFModel, VanillaModelConfig
 from nerfstudio.pipelines.base_pipeline import VanillaPipelineConfig
-from nerfstudio.pipelines.dynamic_batch import DynamicBatchPipelineConfig
 from nerfstudio.plugins.registry import discover_methods
 
 method_configs: Dict[str, TrainerConfig] = {}
@@ -251,6 +224,7 @@ method_configs["register-objaverse-nerfacto"] = TrainerConfig(
     viewer=ViewerConfig(num_rays_per_chunk=1 << 15),
     vis="viewer",
 )
+
 
 
 external_methods, external_descriptions = discover_methods()

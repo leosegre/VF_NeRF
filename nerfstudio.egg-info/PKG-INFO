@@ -1,20 +1,79 @@
-# VF-NeRF: Viewshed Field For Rigid NeRF Registration
-<a href="https://leosegre.github.io/VF_NeRF/"><img src="https://img.shields.io/static/v1?label=Project&message=Website&color=blue"></a>
-<a href="https://arxiv.org/abs/XXXX.XXXX"><img src="https://img.shields.io/badge/arXiv-XXXX.XXXX-b31b1b.svg"></a>
-
-By [Leo Segre](https://scholar.google.co.il/citations?hl=iw&user=A7FWhoIAAAAJ) and [Shai Avidan](https://scholar.google.co.il/citations?hl=iw&user=hpItE1QAAAAJ)
-
-This repo is the official implementation of "[VF-NeRF: Viewshed Field For Rigid NeRF Registration](https://arxiv.org/pdf/XXXX.XXXX.pdf)".
-
-<p align="center">
-<img src="images/merged_office.png" width="384">
-</p>
-
-## Citation
-If you find this useful, please cite this work as follows:
-```bibtex
-TBD
-```
+Metadata-Version: 2.1
+Name: nerfstudio
+Version: 0.2.1
+Summary: All-in-one repository for state-of-the-art NeRFs
+License: Apache 2.0
+Project-URL: Documentation, https://docs.nerf.studio
+Classifier: Development Status :: 3 - Alpha
+Classifier: Programming Language :: Python
+Requires-Python: >=3.7.3
+Description-Content-Type: text/markdown
+License-File: LICENSE
+Requires-Dist: appdirs>=1.4
+Requires-Dist: av>=9.2.0
+Requires-Dist: cryptography>=38
+Requires-Dist: tyro>=0.3.31
+Requires-Dist: gdown>=4.6.0
+Requires-Dist: ninja>=1.10
+Requires-Dist: functorch>=0.2.1
+Requires-Dist: h5py>=2.9.0
+Requires-Dist: imageio>=2.21.1
+Requires-Dist: importlib-metadata>=6.0.0; python_version < "3.10"
+Requires-Dist: ipywidgets>=7.6
+Requires-Dist: jupyterlab>=3.3.4
+Requires-Dist: matplotlib>=3.5.3
+Requires-Dist: mediapy>=1.1.0
+Requires-Dist: msgpack>=1.0.4
+Requires-Dist: msgpack_numpy>=0.4.8
+Requires-Dist: nerfacc==0.5.2
+Requires-Dist: open3d>=0.16.0
+Requires-Dist: opencv-python==4.6.0.66
+Requires-Dist: Pillow==9.4.0
+Requires-Dist: plotly>=5.7.0
+Requires-Dist: protobuf!=3.20.0,<=3.20.3
+Requires-Dist: pyequilib>=0.5.6
+Requires-Dist: pymeshlab>=2022.2.post2
+Requires-Dist: pyngrok>=5.1.0
+Requires-Dist: python-socketio>=5.7.1
+Requires-Dist: pyquaternion>=0.9.9
+Requires-Dist: requests
+Requires-Dist: rich>=12.5.1
+Requires-Dist: scikit-image>=0.19.3
+Requires-Dist: tensorboard==2.9.0
+Requires-Dist: torch<2.0.0,>=1.12.1
+Requires-Dist: torchmetrics[image]>=0.9.3
+Requires-Dist: torchtyping>=0.1.4
+Requires-Dist: torchvision>=0.13.0
+Requires-Dist: typing_extensions>=4.4.0
+Requires-Dist: viser>=0.0.5
+Requires-Dist: nuscenes-devkit>=1.1.1
+Requires-Dist: wandb>=0.13.3
+Requires-Dist: xatlas
+Requires-Dist: trimesh>=3.20.2
+Requires-Dist: torchdiffeq>=0.2.3
+Requires-Dist: torchgeometry>=0.1.2
+Provides-Extra: gen
+Requires-Dist: diffusers==0.9.0; extra == "gen"
+Requires-Dist: transformers==4.24.0; extra == "gen"
+Provides-Extra: dev
+Requires-Dist: black[jupyter]==22.3.0; extra == "dev"
+Requires-Dist: pylint==2.13.4; extra == "dev"
+Requires-Dist: pytest==7.1.2; extra == "dev"
+Requires-Dist: pytest-xdist==2.5.0; extra == "dev"
+Requires-Dist: typeguard==2.13.3; extra == "dev"
+Provides-Extra: docs
+Requires-Dist: furo==2022.09.29; extra == "docs"
+Requires-Dist: ipython==8.6.0; extra == "docs"
+Requires-Dist: readthedocs-sphinx-search==0.1.2; extra == "docs"
+Requires-Dist: myst-nb==0.16.0; extra == "docs"
+Requires-Dist: nbconvert==7.2.5; extra == "docs"
+Requires-Dist: nbformat==5.5.0; extra == "docs"
+Requires-Dist: sphinx==5.2.1; extra == "docs"
+Requires-Dist: sphinxemoji==0.2.0; extra == "docs"
+Requires-Dist: sphinx-argparse==0.3.1; extra == "docs"
+Requires-Dist: sphinx-copybutton==0.5.0; extra == "docs"
+Requires-Dist: sphinx-design==0.2.0; extra == "docs"
+Requires-Dist: sphinxext-opengraph==0.6.3; extra == "docs"
 
 # About
 
@@ -112,3 +171,12 @@ ns-export nf-pointcloud --help
 
 - A collaboration friendly studio for NeRFs
 
+# Citation
+
+You can find a paper writeup on [arXiv]().
+
+If you use this code or find the documentation useful for your research, please consider citing:
+
+```
+
+```

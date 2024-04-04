@@ -216,7 +216,6 @@ def launch(
 
 def main(config: TrainerConfig) -> None:
     """Main function."""
-
     config.set_timestamp()
     if config.data:
         CONSOLE.log("Using --data alias for --data.pipeline.datamanager.data")
