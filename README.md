@@ -1,6 +1,6 @@
 # VF-NeRF: Viewshed Field For Rigid NeRF Registration
 <a href="https://leosegre.github.io/VF_NeRF/"><img src="https://img.shields.io/static/v1?label=Project&message=Website&color=blue"></a>
-<a href="https://arxiv.org/abs/XXXX.XXXX"><img src="https://img.shields.io/badge/arXiv-XXXX.XXXX-b31b1b.svg"></a>
+<a href="https://arxiv.org/abs/2404.03349"><img src="https://img.shields.io/badge/arXiv-2404.03349-b31b1b.svg"></a>
 
 By [Leo Segre](https://scholar.google.co.il/citations?hl=iw&user=A7FWhoIAAAAJ) and [Shai Avidan](https://scholar.google.co.il/citations?hl=iw&user=hpItE1QAAAAJ)
 
@@ -13,7 +13,14 @@ This repo is the official implementation of "[VF-NeRF: Viewshed Field For Rigid 
 ## Citation
 If you find this useful, please cite this work as follows:
 ```bibtex
-TBD
+@misc{segre2024vfnerf,
+      title={VF-NeRF: Viewshed Fields for Rigid NeRF Registration}, 
+      author={Leo Segre and Shai Avidan},
+      year={2024},
+      eprint={2404.03349},
+      archivePrefix={arXiv},
+      primaryClass={cs.CV}
+}
 ```
 
 # About
