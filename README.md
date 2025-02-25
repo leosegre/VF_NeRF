@@ -1,4 +1,5 @@
 # VF-NeRF: Viewshed Field For Rigid NeRF Registration
+## ECCV 2024
 <a href="https://leosegre.github.io/VF_NeRF/"><img src="https://img.shields.io/static/v1?label=Project&message=Website&color=blue"></a>
 <a href="https://arxiv.org/abs/2404.03349"><img src="https://img.shields.io/badge/arXiv-2404.03349-b31b1b.svg"></a>
 
